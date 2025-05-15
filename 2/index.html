@@ -1,43 +1,19 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Coming Soon</title>
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        background-color: black;
-        color: white;
-        font-family: Arial, sans-serif;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .coming-soon {
-        font-size: 10vw; /* Responsive scaling */
-        text-align: center;
-        text-transform: uppercase;
-      }
-    </style>
-  </head>
+<html>
   <body>
     <script src="https://js.puter.com/v2/"></script>
-    <div class="coming-soon">Coming Soon</div>
     <script>
-      puter.ai
-        .chat(
+      async function streamClaudeResponse() {
+        const response = await puter.ai.chat(
           "Tell me the best times to trade the MES for a minimum of 6 5-point take profit trades in the current Pacific Time",
-          {
-            model: "claude-3-7-sonnet",
-          },
-        )
-        .then((response) => {
-          puter.print(response.message.content[0].text);
-        });
+          { model: "claude-3-7-sonnet", stream: true },
+        );
+
+        for await (const part of response) {
+          puter.print(part?.text);
+        }
+      }
+
+      streamClaudeResponse();
     </script>
   </body>
 </html>
