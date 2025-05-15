@@ -4,7 +4,7 @@
     <script>
       async function streamClaudeResponse() {
         const response = await puter.ai.chat(
-          "Tell me the best times to trade the MES for a minimum of 6 5-point take profit trades in the current Pacific Time",
+          "Create a ninjascript indicator that shows the US economic calendar that spans three days, the last trading day, current trading day and next trading day. It should only show high priority data releases. It should be colored in yellow and have parameters that allow for color change, days back and days forward of the calendar to show.",
           { model: "claude-3-7-sonnet", stream: true },
         );
 
