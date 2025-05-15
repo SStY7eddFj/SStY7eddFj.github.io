@@ -29,9 +29,12 @@
     <div class="coming-soon">Coming Soon</div>
     <script>
       puter.ai
-        .chat("Explain quantum computing in simple terms", {
-          model: "claude-3-7-sonnet",
-        })
+        .chat(
+          "Tell me the best times to trade the MES for a minimum of 6 5-point take profit trades in the current Pacific Time",
+          {
+            model: "claude-3-7-sonnet",
+          },
+        )
         .then((response) => {
           puter.print(response.message.content[0].text);
         });
